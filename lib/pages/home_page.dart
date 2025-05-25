@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../providers/game_provider.dart';
 import '../models/game.dart';
+import 'game_page.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -32,7 +34,12 @@ class HomePage extends ConsumerWidget {
                   title: Text(game.name),
                   subtitle: Text('最后更新: ${game.lastModified.toString()}'),
                   onTap: () {
-                    // TODO: 启动游戏
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => GamePage(game: game),
+                      ),
+                    );
                   },
                 );
               },
